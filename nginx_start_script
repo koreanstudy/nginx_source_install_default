@@ -8,7 +8,7 @@
 # processname: nginx
 # config:      /usr/local/nginx/conf/nginx.conf
 # config:      /usr/local/nginx/sbin/nginx
-# pidfile:     /usr/local/nginx/run/nginx.pid
+# pidfile:     /usr/local/nginx/tmp/run/nginx.pid
 
 # Source function library.
 . /etc/rc.d/init.d/functions
@@ -26,7 +26,7 @@ NGINX_CONF_FILE="/usr/local/nginx/conf/nginx.conf"
 
 [ -f /etc/sysconfig/nginx ] && . /etc/sysconfig/nginx
 
-lockfile=/usr/local/nginx/tmp/nginx
+lockfile=/usr/local/nginx/tmp/nginx.lock
 
 make_dirs() {
    # make required directories
