@@ -32,7 +32,9 @@ http {
     keepalive_timeout  120;
 
     #gzip  on;
-
+    
+    include /usr/local/nginx/conf.d/*.conf;
+    
     server {
         listen       80;
         server_name  localhost;
