@@ -2,7 +2,7 @@
 user  nobody;
 worker_processes  1;
 
-error_log  /usr/local/nginx/logs/error.log;
+error_log  /usr/local/nginx/logs/error_log;
 #error_log  logs/error.log  notice;
 #error_log  logs/error.log  info;
 
@@ -38,7 +38,7 @@ http {
 
         #charset koi8-r;
 
-        #access_log  logs/host.access.log  main;
+        #access_log  logs/host.access_log  main;
 
         location / {
             root   html;
@@ -67,7 +67,7 @@ http {
             fastcgi_pass   127.0.0.1:9000;
             fastcgi_index  index.php;
             fastcgi_param  SCRIPT_FILENAME  /scripts$fastcgi_script_name;
-            #include        fastcgi_params;
+            include        fastcgi_params;
             include fastcgi.conf;
         }
         # deny access to .htaccess files, if Apache's document root
@@ -117,6 +117,6 @@ http {
 
     ssl_protocols TLSv1.2 TLSv1.1 TLSv1;
 
-    include /usr/local/nginx/conf.d/*.conf;
+#   include /usr/local/nginx/conf.d/*.conf;
 
 }
