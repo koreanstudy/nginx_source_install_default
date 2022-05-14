@@ -33,7 +33,7 @@ http {
         listen       80;
         server_name  localhost;
 
-    root        /usr/share/nginx/html;
+        root        /usr/share/nginx/html/;
         #charset koi8-r;
 
         access_log  logs/host.access.log  main;
@@ -51,6 +51,12 @@ http {
             root   /usr/share/nginx/html;
         }
 
+        location /favicon.ico {
+            return 204;
+            access_log off;
+            log_not_found off;
+        }
+
         # proxy the PHP scripts to Apache listening on 127.0.0.1:80
         #
         #location ~ \.php$ {
@@ -60,10 +66,11 @@ http {
         # pass the PHP scripts to FastCGI server listening on 127.0.0.1:9000
         #
         location ~ \.php$ {
-        #   root           html;
+            ###### 웹루트 디렉토리는 주석처리 했습니다. server 설정에서 동일 웹루트 디렉토리를 바라보기 때문입니다.
+            ###root          /절대경로웹루트디렉토리;
             fastcgi_pass   127.0.0.1:9000;
             fastcgi_index  index.php;
-            fastcgi_param  SCRIPT_FILENAME  $document_root$fastcgi_script_name;
+            fastcgi_param  SCRIPT_FILENAME  $document_root/$fastcgi_script_name;
             include        fastcgi_params;
         }
 
