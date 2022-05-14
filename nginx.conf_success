@@ -38,13 +38,15 @@ http {
     server {
         listen       80;
         server_name  localhost;
+        root /usr/local/nginx/html/;
 
         #charset koi8-r;
 
         #access_log  logs/host.access.log  main;
 
         location / {
-            root   html;
+            ###server 쪽에서 설정해줬습니다.
+            ###root   html;
             index  index.html index.htm;
         }
 
@@ -69,7 +71,7 @@ http {
         #   root           html;
             fastcgi_pass   127.0.0.1:9000;
             fastcgi_index  index.php;
-            fastcgi_param  SCRIPT_FILENAME  $document_root$fastcgi_script_name;
+            fastcgi_param  SCRIPT_FILENAME  $document_root/$fastcgi_script_name;
             include        fastcgi_params;
         }
 
